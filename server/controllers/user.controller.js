@@ -99,7 +99,14 @@ export const signout = catchAsyncError(async (req, res, next) => {
     });
 });
 
-export const getuser = catchAsyncError(async (req, res, next) => { });
+export const getuser = catchAsyncError(async (req, res, next) => {
+    // we are getting user id from (isAuthenticated) => req.user = user;
+    const user = await User.findById(req.user._id);
+    res.status(200).json({
+        success: true,
+        user,
+    });
+});
 
 export const updateProfile = catchAsyncError(async (req, res, next) => { });
 
