@@ -5,8 +5,8 @@ export const generateJWTToken = async (user, message, statusCode, res) => {
         expiresIn: process.env.JWT_EXPIRE,
     });
     return res.status(statusCode).cookie("token", token, {
+        maxAge: process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        maxAge: process.env.COOKIE_EXPIRE,
         sameSite: "strict",
         secure: process.env.NODE_ENV !== "developmennt" ? true : false,
 
