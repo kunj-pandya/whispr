@@ -153,8 +153,7 @@ export const updateProfile = catchAsyncError(async (req, res, next) => {
             url: cloudinaryResponse.secure_url,
         };
     }
-    console.log("Cloudinary Upload Response:", cloudinaryResponse);
-    console.log("Received avatar file:", avatar);
+
 
     let user = await User.findByIdAndUpdate(req.user._id, data, {
         new: true,
