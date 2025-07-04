@@ -4,22 +4,26 @@ Whispr is a real-time chat application built using the **MERN stack** (MongoDB, 
 
 ---
 
-## Features (Completed So Far)
 
 - Express server setup with middleware
 - MongoDB connection via Mongoose
+- Environment configuration using `.env` (not committed)
 - User registration (signup) functionality with:
   - Input validation
   - Password hashing using `bcryptjs`
-  - JWT token generation with cookies
+  - JWT token generation with HTTP-only cookies
+- User login (signin) functionality with:
+  - Email and password validation
+  - Secure token issuance and cookie handling
+- User logout (signout) functionality with:
+  - Cookie clearing and session termination
+- Authentication middleware (`auth.middleware.js`) to protect routes
+- Cloudinary + express-fileupload middleware integrated
 - Organized file structure using:
   - Controllers
   - Models
   - Routes
-  - Middleware (e.g., `catchAsyncError`)
-- Cloudinary + express-fileupload middleware integrated
-- Environment configuration using `.env` (not committed)
-
+  - Middleware (e.g., `catchAsyncError`, `auth.middleware`)
 ---
 
 ## Tech Stack
