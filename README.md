@@ -20,6 +20,9 @@ Whispr is a real-time chat application built using the **MERN stack** (MongoDB, 
   - Get user (getUser) functionality with:
   - Returns authenticated user's profile
   - Protected using auth middleware
+  - Update profile (updateProfile) functionality with:
+  - Updates full name and email
+  - Supports avatar update with Cloudinary upload
 - Authentication middleware (`auth.middleware.js`) to protect routes
 - Cloudinary + express-fileupload middleware integrated
 - Organized file structure using:
