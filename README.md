@@ -49,6 +49,7 @@
 
 - **Message controller (`message.controller.js`)**
   - `getAllUsers`: fetches all users except the current user
+  - `getMessages`: retrieves message history between the current user and selected user
 
 ---
 
