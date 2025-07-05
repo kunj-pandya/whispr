@@ -52,8 +52,7 @@
   - `getMessages`: retrieves message history between the current user and selected user
   - `sendMessage`: handles sending a new message to a specific user
 
-  - **Socket.IO integration (`/utils/socket.js`)**
-  - Located in `utils/socket.js`, handles Socket.IO server initialization
+- **Socket.IO integration (`/utils/socket.js`)**
   - Maps connected users with `userSocketMap` for tracking online users
   - Emits `getOnlineUsers` on connect/disconnect to broadcast active users
   - Emits `newMessage` to the receiver if online during message delivery
