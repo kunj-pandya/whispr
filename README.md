@@ -32,25 +32,31 @@
   - Set up `express-fileupload` to handle multipart uploads
   - Integrated avatar upload with Cloudinary
 
-- **User routes (`user.routes.js`)**
+- **User routes (`/routes/user.routes.js`)**
   - Created routing structure before controller logic
   - Includes paths for signup, signin, logout, get user, update profile
 
-- **User controller (`user.controller.js`)**
+- **User controller (`/controllers/user.controller.js`)**
   - `signup`: handles user registration and token issuance
   - `signin`: handles login validation and token issuance
   - `signout`: clears cookie to log out user
   - `getuser`: fetches authenticated user's profile
   - `updateProfile`: updates profile fields and avatar via Cloudinary
 
-- **Message routes (`message.routes.js`)**
+- **Message routes (`/routes/message.routes.js`)**
   - Created routing structure before controller logic
   - Includes paths for get all users, fetch messages, and send a message
 
-- **Message controller (`message.controller.js`)**
+- **Message controller (`/controllers/message.controller.js)**
   - `getAllUsers`: fetches all users except the current user
   - `getMessages`: retrieves message history between the current user and selected user
+  - `sendMessage`: handles sending a new message to a specific user
 
+  - **Socket.IO integration (`/utils/socket.js`)**
+  - Located in `utils/socket.js`, handles Socket.IO server initialization
+  - Maps connected users with `userSocketMap` for tracking online users
+  - Emits `getOnlineUsers` on connect/disconnect to broadcast active users
+  - Emits `newMessage` to the receiver if online during message delivery
 ---
 
 ## Tech Stack
