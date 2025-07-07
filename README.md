@@ -58,7 +58,7 @@
 
 ---
 
-## ✅ Client (Frontend) Setup
+## ✅ Client (Frontend) Features Completd So far
 
 - **Vite + React Initialization**
   - Initialized React app using [Vite](https://vitejs.dev/) inside `/client` folder
@@ -66,6 +66,33 @@
 
 - **Project Structure**
   - Setup folders for components, pages, redux slices, and utilities
+
+- **Axios configuration (`/lib/axios.js`)**
+  - Configured `axiosInstance` with dynamic `baseURL` based on environment
+  - Enabled `withCredentials` to send cookies with requests
+
+- **Socket.IO client setup (`/lib/socket.js`)**
+  - Initialized Socket.IO client connection using `userId` query
+  - Shared connection instance across the app
+  - Functions to connect, disconnect, and access socket instance
+
+- **Redux store (`/store/store.js`)**
+  - Configured Redux store using `configureStore`
+  - Integrated `authSlice` to manage user state and online users
+
+- **Auth state management (`/store/slices/authSlice.js`)**
+  - Created Redux slice to manage:
+    - `authUser` object
+    - `isCheckingAuth` for initial auth loading
+    - `onlineUsers` list
+  - Used `createAsyncThunk` to fetch authenticated user from `/user/me`
+  - Connected socket after successful authentication
+
+- **App initialization (`main.jsx` & `App.jsx`)**
+  - Wrapped app in `<Provider>` to enable global Redux access
+  - Setup route-based rendering using `react-router-dom`
+  - Protected routes using conditional rendering based on `authUser`
+  - Defined routes for: `/`, `/login`, `/register`, `/profile`
 
 ---
 
