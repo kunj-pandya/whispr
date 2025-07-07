@@ -21,6 +21,7 @@ const App = () => {
         dispatch(getUser());
     }, [getUser]);
 
+
     useEffect(() => {
         if (authUser) {
             const socket = connectSocket(authUser._id);
