@@ -2,8 +2,6 @@
 
 **Whispr** is a real-time chat application built with the MERN stack (MongoDB, Express.js, React.js, Node.js). It features live messaging using Socket.IO and secure user authentication via JWT (JSON Web Tokens).
 
-
-
 ---
 ## ✅ Server Features Completed So Far
 
@@ -56,12 +54,26 @@
   - Maps connected users with `userSocketMap` for tracking online users
   - Emits `getOnlineUsers` on connect/disconnect to broadcast active users
   - Emits `newMessage` to the receiver if online during message delivery
+
+
+---
+
+## ✅ Client (Frontend) Setup
+
+- **Vite + React Initialization**
+  - Initialized React app using [Vite](https://vitejs.dev/) inside `/client` folder
+  - Installed essential packages including: `axios`, `react-router-dom`, `react-redux`, `redux`, `socket.io-client`, `lucide-react`, `react-toastify`
+
+- **Project Structure**
+  - Setup folders for components, pages, redux slices, and utilities
+
 ---
 
 ## Tech Stack
 
 | Layer                | Technology Used                         |
 |----------------------|------------------------------------------|
+| Frontend             | React.js (with Vite)                     |
 | Backend              | Node.js, Express.js                      |
 | Authentication       | JWT, cookie-based authentication         |
 | Database             | MongoDB with Mongoose ORM                |
@@ -75,7 +87,17 @@
 
 ```text
 /whispr
-├── /client                  → React frontend (coming soon)
+├── /client                  → React frontend (Vite)
+│   ├── /public              → Static assets
+│   ├── /src
+│   │   ├── /components      → Reusable UI components
+│   │   ├── /pages           → Page-level components (Login, Chat, etc.)
+│   │   ├── /redux           → Redux slices & store configuration
+│   │   ├── /utils           → Helper functions (e.g. API handlers)
+│   │   ├── App.jsx          → Root component
+│   │   └── main.jsx         → Entry point for React + Vite
+│   └── vite.config.js       → Vite configuration
+│
 ├── /server
 │   ├── /config              → Environment and DB configuration
 │   │   └── config.env
@@ -93,8 +115,9 @@
 │   ├── /routes              → REST API route handlers
 │   │   ├── user.routes.js
 │   │   └── message.routes.js
-│   ├── /utils               → Utility functions (e.g., JWT token)
-│   │   └── jwtToken.js
+│   ├── /utils               → Utility functions (e.g., JWT, Socket.IO)
+│   │   ├── jwtToken.js
+│   │   └── socket.js
 │   ├── /temp                → Temporary file uploads (ignored in .gitignore)
 │   ├── app.js               → Express app configuration
 │   └── server.js            → Server entry point
@@ -150,5 +173,34 @@ Follow these steps to get the backend server running locally:
     ```
 
 
+##  How to Run the Client
+
+Follow these steps to get the frontend client running locally:
+
+1. Navigate to the client directory (if not already):
+
+    ```bash
+    cd whispr/client
+    ```
+
+2. Install client dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3. Start the development server using Vite:
+
+    ```bash
+    npm run dev
+    ```
+
+4. Open the app in your browser:
+
+    ```
+    http://localhost:5173
+    ```
+
+> Ensure your backend server is running and the `FRONTEND_URL` is set properly in `server/config/config.env`.
 
     
