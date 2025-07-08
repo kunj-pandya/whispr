@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { axiosInstance } from "../..//lib/axios";
-import { connectSocket } from "../../lib/socket";
+import { connectSocket, disconnectSocket } from "../../lib/socket";
+import { toast } from "react-toastify"
 
 export const getUser = createAsyncThunk("user/me", async (_, thunkAPI) => {
     try {
@@ -14,6 +15,17 @@ export const getUser = createAsyncThunk("user/me", async (_, thunkAPI) => {
         );
     }
 });
+export const logout = createAsyncThunk("user/sign-out", async (_, thunkAPI) => {
+    try {
+        await axiosInstance.get("/user/sign-out");
+        disconnectSocket();
+        return null;
+    } catch (error) {
+        toast.error(error.response?.data.message);
+        return thunkAPI.rejectWithValue(error.response.data.message);
+
+    }
+})
 
 const authSlice = createSlice({
     name: "auth",
@@ -38,7 +50,11 @@ const authSlice = createSlice({
             .addCase(getUser.rejected, (state, action) => {
                 state.authUser = action.payload;
                 state.isCheckingAuth = false;
-            });
+            }).addCase(logout.fulfilled, (state) => {
+                state.authUser = null;
+            }).addCase(logout.rejected, (state) => {
+                state.authUser = state.authUser;
+            })
     },
 });
 
